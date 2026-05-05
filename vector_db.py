@@ -1,19 +1,33 @@
+"""Vector database for document retrieval using FAISS and sentence transformers."""
+
 import faiss
 import numpy as np
-from sentence_transformers import SentenceTransformer
-import pickle
 import os
+import pickle
+from sentence_transformers import SentenceTransformer
 
-class VectorDatabase:
+
+class VectorDB:
+    """Vector database for semantic document search."""
+    
     def __init__(self, model_name='all-MiniLM-L6-v2'):
-        self.model = SentenceTransformer(model_name)
-        self.dimension = 384  # Dimension for all-MiniLM-L6-v2
-        self.index = None
-        self.documents = []
+        """Initialize vector database.
         
-    def create_synthetic_data(self):
-        """Create synthetic documents about NLP, GANs, and Transformers"""
-        synthetic_docs = [
+        Args:
+            model_name: Name of the sentence transformer model.
+        """
+        self.model = SentenceTransformer(model_name)
+        self.dim = 384  # Dimension for all-MiniLM-L6-v2
+        self.idx = None
+        self.docs = []
+        
+    def _gen_docs(self):
+        """Generate synthetic ML/AI documents.
+        
+        Returns:
+            List of synthetic documents.
+        """
+        return [
             # Week 1 - NLP Fundamentals
             "Natural Language Processing (NLP) is a subfield of artificial intelligence that focuses on enabling computers to understand, interpret, and generate human language. NLP combines computational linguistics with statistical, machine learning, and deep learning models to process text and speech data.",
             
@@ -109,89 +123,83 @@ class VectorDatabase:
             
             "Mixture of Experts (MoE) architectures enable efficient scaling by using sparse activation patterns, where different parts of the network specialize in different types of inputs while maintaining overall model capacity."
         ]
-        
-        return synthetic_docs
     
-    def create_index(self):
-        """Create FAISS index and embed documents"""
-        print("Creating synthetic documents...")
-        self.documents = self.create_synthetic_data()
+    def build_idx(self):
+        """Build FAISS index and embed documents."""
+        self.docs = self._gen_docs()
         
-        print(f"Embedding {len(self.documents)} documents...")
-        embeddings = self.model.encode(self.documents, show_progress_bar=True)
+        embs = self.model.encode(self.docs, show_progress_bar=True)
         
-        # Create FAISS index
-        self.index = faiss.IndexFlatL2(self.dimension)
-        self.index.add(np.array(embeddings, dtype=np.float32))
+        self.idx = faiss.IndexFlatL2(self.dim)
+        self.idx.add(np.array(embs, dtype=np.float32))
         
-        print(f"Created FAISS index with {self.index.ntotal} vectors")
+    def save_idx(self, idx_path="faiss_index.bin", docs_path="documents.pkl"):
+        """Save FAISS index and documents.
         
-    def save_index(self, index_path="faiss_index.bin", docs_path="documents.pkl"):
-        """Save FAISS index and documents"""
-        if self.index is None:
-            self.create_index()
+        Args:
+            idx_path: Path to save FAISS index.
+            docs_path: Path to save documents.
+        """
+        if self.idx is None:
+            self.build_idx()
             
-        faiss.write_index(self.index, index_path)
+        faiss.write_index(self.idx, idx_path)
         
         with open(docs_path, 'wb') as f:
-            pickle.dump(self.documents, f)
-            
-        print(f"Saved index to {index_path} and documents to {docs_path}")
+            pickle.dump(self.docs, f)
         
-    def load_index(self, index_path="faiss_index.bin", docs_path="documents.pkl"):
-        """Load FAISS index and documents"""
-        if os.path.exists(index_path) and os.path.exists(docs_path):
-            self.index = faiss.read_index(index_path)
+    def load_idx(self, idx_path="faiss_index.bin", docs_path="documents.pkl"):
+        """Load FAISS index and documents.
+        
+        Args:
+            idx_path: Path to FAISS index file.
+            docs_path: Path to documents file.
+            
+        Returns:
+            True if loaded successfully, False otherwise.
+        """
+        if os.path.exists(idx_path) and os.path.exists(docs_path):
+            self.idx = faiss.read_index(idx_path)
             with open(docs_path, 'rb') as f:
-                self.documents = pickle.load(f)
-            print(f"Loaded index with {self.index.ntotal} vectors and {len(self.documents)} documents")
+                self.docs = pickle.load(f)
             return True
         return False
     
     def search(self, query, k=3):
-        """Search for relevant documents"""
-        if self.index is None:
-            if not self.load_index():
-                self.create_index()
-                
-        query_embedding = self.model.encode([query])
-        query_embedding = np.array(query_embedding, dtype=np.float32)
+        """Search for relevant documents.
         
-        distances, indices = self.index.search(query_embedding, k)
+        Args:
+            query: Search query string.
+            k: Number of results to return.
+            
+        Returns:
+            List of search results with document, distance, and index.
+        """
+        if self.idx is None:
+            if not self.load_idx():
+                self.build_idx()
+                
+        q_emb = self.model.encode([query])
+        q_emb = np.array(q_emb, dtype=np.float32)
+        
+        dists, inds = self.idx.search(q_emb, k)
         
         results = []
-        for i, (dist, idx) in enumerate(zip(distances[0], indices[0])):
-            if idx < len(self.documents):
+        for d, idx in zip(dists[0], inds[0]):
+            if idx < len(self.docs):
                 results.append({
-                    'document': self.documents[idx],
-                    'distance': float(dist),
-                    'index': int(idx)
+                    'doc': self.docs[idx],
+                    'dist': float(d),
+                    'idx': int(idx)
                 })
                 
         return results
 
 def main():
-    """Initialize and create the vector database"""
-    print("Initializing Vector Database...")
-    vector_db = VectorDatabase()
-    
-    # Create and save the index
-    vector_db.create_index()
-    vector_db.save_index()
-    
-    # Test search functionality
-    print("\nTesting search functionality...")
-    test_queries = [
-        "What is self-attention in transformers?",
-        "How do GANs work?",
-        "Explain word embeddings in NLP"
-    ]
-    
-    for query in test_queries:
-        print(f"\nQuery: {query}")
-        results = vector_db.search(query, k=2)
-        for i, result in enumerate(results):
-            print(f"Result {i+1} (distance: {result['distance']:.4f}): {result['document'][:100]}...")
+    """Initialize and create the vector database."""
+    db = VectorDB()
+    db.build_idx()
+    db.save_idx()
 
 if __name__ == "__main__":
     main()

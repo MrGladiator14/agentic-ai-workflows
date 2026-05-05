@@ -1,0 +1,235 @@
+PS C:\Developer\Codebase\IITGN-projects\agentic-AI-1> uv run .\assignment.py
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights: 100%|██████████████████████████████████| 103/103 [00:00<00:00, 3997.72it/s]
+
+==================================================
+Starting Enhanced Workflow with RAG Support
+Goal: Find the latest AI research papers
+==================================================
+
+[RAG Decider] Use RAG: False | Reason: This goal requires access to current information and dynamic data, which is not typically stored in a knowledge base. RAG is better suited for providing explanations and definitions.
+[Planner] Generated 3 tasks:
+ 1. Create an account on arXiv or Semantic Scholar to access the latest research papers
+ 2. Search for keywords related to AI research, such as 'deep learning' or 'natural language processing'
+ 3. Filter the search results by date to find the most recent papers
+[Executor] Task: Create an account on arXiv or Semantic Scholar to access the...
+Result: **Creating an Account on arXiv and Semantic Scholar**
+
+**Step 1: arXiv Account Creation**
+
+To create an account on arXiv...
+[Executor] Task: Search for keywords related to AI research, such as 'deep le...
+Result: Based on the given web search results and context, I will provide a comprehensive list of keywords related to AI researc...
+[Executor] Task: Filter the search results by date to find the most recent pa...
+Result: Based on the provided context, to filter the search results by date to find the most recent papers, I can use the follow...
+[Verifier] Score: 0.98 | Approved: True
+
+==================================================
+Final Results
+==================================================
+RAG Used: False
+Score: N/A
+Iterations: 0
+
+Tasks and Results:
+
+Task 1: Create an account on arXiv or Semantic Scholar to access the latest research papers  
+Result 1: **Creating an Account on arXiv and Semantic Scholar**
+
+**Step 1: arXiv Account Creation**
+
+To create an account on arXiv, follow these steps:
+
+1. Go to the arXiv website: [https://arxiv.org/](https://arxiv.org/)
+2. Click on the "Login" button at the top-right corner of the page.
+3. Since you don't have an account, click on the "Create an account" link.
+4. Fill out the registration form with the required information:
+        * Email address
+        * Username (choose a unique and memorable name)
+        * Password (create a strong and secure password)
+        * Confirm password
+        * First name and last name
+        * Institutional affiliation (optional)
+5. Click on the "Create account" button to submit your registration request.
+6. arXiv will send a verification email to the email address you provided. Click on the verification link to activate your account.
+
+**Step 2: Semantic Scholar Account Creation (Not Required, but Optional for Submission)**    
+
+As mentioned in the web search result, Semantic Scholar does not require an account to access papers. However, if you want to submit or update papers, you need to create an account. Here's how:
+
+1. Go to the Semantic Scholar website: [https://www.semanticscholar.org/](https://www.semanticscholar.org/)
+2. Click on the "Login" or "Sign in" button at the top-right corner of the page.
+3. Since you don't have an account, click on the "Create an account" link.
+4. Fill out the registration form with the required information:
+        * Email address
+        * Username (choose a unique and memorable name)
+        * Password (create a strong and secure password)
+        * Confirm password
+        * First name and last name
+        * Institutional affiliation (optional)
+5. Click on the "Create account" button to submit your registration request.
+6. Semantic Scholar will send a verification email to the email address you provided. Click on the verification link to activate your account.
+
+**Tips and Reminders**
+
+* Use a valid email address to create an account on both arXiv and Semantic Scholar.
+* Choose a unique and memorable username for both accounts.
+* Use strong and secure passwords for both accounts.
+* If you encounter any issues during the registration process, contact the respective support teams for assistance.
+* arXiv and Semantic Scholar may have different account requirements and features, so familiarize yourself with their respective policies and guidelines.
+
+By following these steps, you'll be able to create accounts on arXiv and Semantic Scholar, granting you access to the latest research papers and enabling you to submit or update papers on Semantic Scholar.
+
+Task 2: Search for keywords related to AI research, such as 'deep learning' or 'natural language processing'
+Result 2: Based on the given web search results and context, I will provide a comprehensive list of keywords related to AI research, including 'deep learning' or 'natural language processing':
+
+**Deep Learning:**
+
+1. **Convolutional Neural Networks (CNNs)**: A type of neural network that uses convolutional and pooling layers to analyze spatial hierarchies of data.
+2. **Recurrent Neural Networks (RNNs)**: A type of neural network that uses recurrent connections to analyze sequential data.
+3. **Long Short-Term Memory (LSTM)**: A type of RNN that can learn long-term dependencies in data.
+4. **Generative Adversarial Networks (GANs)**: A type of neural network that can generate new, synthetic data that resembles existing data.
+5. **Deep Reinforcement Learning**: A type of reinforcement learning that uses deep neural networks to learn policies.
+6. **Transfer Learning**: A technique that uses pre-trained neural networks as a starting point for new tasks.
+7. **Autoencoders**: A type of neural network that can learn compressed representations of data.
+
+**Natural Language Processing (NLP):**
+
+1. **Named Entity Recognition (NER)**: A task that involves identifying named entities in text, such as people, places, and organizations.
+2. **Part-of-Speech (POS) Tagging**: A task that involves identifying the grammatical category of each word in a sentence.
+3. **Sentiment Analysis**: A task that involves determining the sentiment or emotional tone of text.
+4. **Text Classification**: A task that involves classifying text into predefined categories.
+5. **Machine Translation**: A task that involves translating text from one language to another.
+6. **Question Answering**: A task that involves answering questions based on the content of a text.
+7. **Text Summarization**: A task that involves summarizing a long piece of text into a shorter summary.
+
+**Large Language Models (LLMs):**
+
+1. **Transformer Architecture**: A type of neural network architecture that is commonly used in LLMs.
+2. **BERT (Bidirectional Encoder Representations from Transformers)**: A pre-trained language model developed by Google.
+3. **RoBERTa (Robustly Optimized BERT Pretraining Approach)**: A variant of the BERT model that uses a different pre-training approach.
+4. **LLaMA (Large Language Model Application)**: A pre-trained language model developed by Meta AI.
+5. **GPT-3 (Generative Pre-trained Transformer 3)**: A pre-trained language model developed by OpenAI.
+
+**Safety and Ethics:**
+
+1. **Value Alignment**: A concept that involves aligning the values and goals of AI systems with human values.
+2. **Control and Robustness**: A concept that involves ensuring that AI systems can be controlled and robust in the face of uncertainty.
+3. **Fairness and Transparency**: A concept that involves ensuring that AI systems are fair and transparent in their decision-making processes.
+
+**Research Index:**
+
+1. **arXiv**: A repository of electronic preprints (known as e-prints) in fields such as physics, mathematics, computer science, and related disciplines.
+2. **Twitter**: A social media platform that is commonly used to share research and discuss AI-related topics.
+3. **Reddit**: A social news and discussion website that is commonly used to share research and discuss AI-related topics.
+
+**Focus Areas:**
+
+1. **Information Retrieval**: A task that involves retrieving relevant information from a large dataset.
+2. **Document Classification**: A task that involves classifying documents into predefined categories.
+3. **Machine Learning**: A subfield of AI that involves developing algorithms that can learn from data.
+4. **Computer Vision**: A subfield of AI that involves developing algorithms that can interpret and understand visual data.
+5. **Robotics**: A subfield of AI that involves developing algorithms that can control and interact with physical systems.
+
+Task 3: Filter the search results by date to find the most recent papers
+Result 3: Based on the provided context, to filter the search results by date to find the most recent papers, I can use the following steps:
+
+1. **Keyword Filter**: Use the keyword filter to look for papers that contain specific keywords in their titles or abstracts. This will ensure that I only consider papers that are relevant to my search.
+
+2. **Date Filter**: After using the keyword filter, I can use the date filter to limit my search results to those published within a specific date range. The date filter will allow me to select a range of years or a specific date.
+
+3. **Quartile Filter**: If available, I can use the quartile filter to limit my results to those papers that are most relevant based on their publication date. The quartile filter will allow me to select the top 25%, 50%, or 75% of papers based on their citation count or publication date.
+
+4. **Most Recent Studies**: By using the date filter, I can ensure that my search results are limited to the most recent studies or papers published within a specific date range.        
+
+5. **Citation Tracking**: After filtering my search results by publication date, I can use the citation tracking feature to discover additional relevant papers that have cited the papers in my results.
+
+To access these features, I can follow these general steps:
+
+- Perform a search using the search engine or academic database of my choice.
+- Use the keyword filter to select relevant papers.
+- Use the date filter to select a specific date range or publication year.
+- If available, use the quartile filter to limit my results to the most relevant papers.     
+- Review my search results to select the most recent papers.
+- Use the citation tracking feature to discover additional relevant papers.
+
+By following these steps, I can efficiently filter my search results by date to find the most recent papers related to my search query.
+
+################################################################################
+
+
+==================================================
+Starting Enhanced Workflow with RAG Support
+Goal: In which week was BERT and GPT architectures introduced?
+==================================================
+
+[RAG Decider] Use RAG: True | Reason: requires factual knowledge about NLP architectures
+[RAG Retriever] Retrieving relevant documents...
+Loaded index with 44 vectors and 44 documents
+[RAG Retriever] Retrieved 2 relevant documents
+[Planner] Generated 3 tasks:
+ 1. Research BERT's original publication date
+ 2. Verify GPT's original publication date
+ 3. Determine the corresponding week based on publication dates
+[Executor] Task: Research BERT's original publication date...
+Result: To find the original publication date of BERT, I'll analyze the given information from the web search results.
+
+The resu...
+[Executor] Task: Verify GPT's original publication date...
+Result: Based on the context provided, it appears that the original GPT model is not explicitly mentioned. However, I can provid...
+[Executor] Task: Determine the corresponding week based on publication dates...
+Result: To determine the corresponding week based on publication dates, I need a specific publication date. However, since you d...
+[Verifier] Score: 0.88 | Approved: True
+
+==================================================
+Final Results
+==================================================
+RAG Used: True
+RAG Documents Retrieved: 2
+Score: N/A
+Iterations: 0
+
+Tasks and Results:
+
+Task 1: Research BERT's original publication date
+Result 1: To find the original publication date of BERT, I'll analyze the given information from the web search results.
+
+The results mention the date "29/11/2019," which refers to the expansion of the BERT family with its French cousin. However, this date does not necessarily represent the original publication date of BERT.
+
+To find the original publication date, I'll need to look for more specific information. According to recent research, BERT was first introduced in the paper "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding" by Devlin et al. at the 2019 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL).     
+
+Based on this, I found that the paper was published in June 2019, not November 2019. Therefore, the original publication date of BERT is:
+
+June 2019
+
+Here is the correct reference:
+Devlin, J., Chang, M. W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers) (pp. 1532-1546). Minneapolis, MN: Association for Computational Linguistics.
+
+Task 2: Verify GPT's original publication date
+Result 2: Based on the context provided, it appears that the original GPT model is not explicitly mentioned. However, I can provide information on the original publication dates of its variants.
+
+GPT-3, a version of the GPT model, was released in 2020. It is the third version of the GPT multimodal large language model developed by OpenAI.
+
+GPT-4, the fourth version of the GPT model, was released in 2023. It has been reported to have achieved state-of-the-art results on a wide range of natural language processing tasks.    
+
+However, the original GPT (GPT-1) model was a part of a research paper titled "Improving Language Understanding by Generative Models" by Alec Radford et al. in 2018. It was presented at the International Conference on Learning Representations (ICLR) in 2019.
+
+To determine the exact original publication date of the GPT model, I would suggest looking at the actual paper titled "Improving Language Understanding by Generative Models" by Alec Radford et al. from 2018.
+
+Task 3: Determine the corresponding week based on publication dates
+Result 3: To determine the corresponding week based on publication dates, I need a specific publication date. However, since you didn't provide one, I will use a general example to explain the process.
+
+Let's say we have a publication date: January 10, 2008.
+
+To determine the corresponding week, we will follow these steps:
+
+4. Apply the modulo 7 operation to the day count, which gives us 2 (9 % 7 = 2). This means that January 10th is the second day of the week.      
+5. Since January 1st to January 6th are in week 1, and we know that January 10th is the second day of the week, we can conclude that January 10th, 2008, is in week 2.
+
+Therefore, the corresponding week based on the publication date January 10, 2008, is week 2.
+
+Keep in mind that this is just an example, and you can use the same process to determine the week for any given publication date.
+
+If you provide me with a specific publication date, I can help you determine the corresponding week.
+
+################################################################################
